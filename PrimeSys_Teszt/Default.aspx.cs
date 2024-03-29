@@ -26,14 +26,20 @@ namespace PrimeSys_Teszt
             }
             return products;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         protected void BindGrid() //shows the products in a table
         {
             List<Product> products = GetProducts();
             GridView1.DataSource = products;
             GridView1.DataBind();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnAddProduct_Click(object sender, EventArgs e)
         {
             List<Product> products = GetProducts();
@@ -85,7 +91,7 @@ namespace PrimeSys_Teszt
                 BindGrid();
             }
         }
-       //for some reason it doesn't work :(
+       //it works :)
         protected void RowUpdating(object sender, GridViewUpdateEventArgs e) 
         {
             List<Product> products = GetProducts();
@@ -94,8 +100,7 @@ namespace PrimeSys_Teszt
             if (rowIndex >= 0 && rowIndex < GridView1.Rows.Count)
             {
                 GridViewRow row = GridView1.Rows[rowIndex];
-                int productId = int.Parse(((Label)row.FindControl("lblID")).Text);
-
+                int productId = int.Parse(GridView1.DataKeys[rowIndex].Value.ToString());
                 TextBox txtName = (TextBox)row.FindControl("txtName");
                 TextBox txtPrice = (TextBox)row.FindControl("txtPrice");
 
@@ -129,6 +134,7 @@ namespace PrimeSys_Teszt
             private int price;
             private DateTime made;
             private DateTime expire;
+            private bool active;
 
             //Public properites to get and set attributes
             public int ID

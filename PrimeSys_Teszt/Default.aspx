@@ -9,11 +9,11 @@
             <h2>Product Management</h2>
             <div>
                 Termék neve: <asp:TextBox ID="txtProductName" runat="server" /><br /><br />
-                Termék ára: &nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtPrice" runat="server" /><br /><br />
+                Termék ára: &nbsp;&nbsp;&nbsp;<asp:TextBox ID="txtPrice" runat="server" textmode="Number"/><br /><br />
                 <asp:Button ID="btnAddProduct" runat="server" Text="Hozzáadás" OnClick="btnAddProduct_Click" />
             </div>
             <br />
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowEditing="RowEditing"
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowEditing="RowEditing" DataKeyNames="ID"
                 OnRowDeleting="RowDeleting" OnRowUpdating="RowUpdating" OnRowCancelingEdit="RowCancelingEdit">
                 <Columns>
                     <asp:TemplateField HeaderText="#ID" ItemStyle-Width="50px">
